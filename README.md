@@ -4,6 +4,6 @@
  <p>[2] Find Sub Domain<br></p>
   <p>[3] Advanced Dorks Search </p>
   <p>[4] Scan list of Dorks </p>
- <p>[5] Scan WebSites [Xss,Sql,Html Inj] </p>
+ <p>[5] Scan WebSites 
 </pre>
 
