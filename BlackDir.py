@@ -1,5 +1,5 @@
 """
-    BlackDir-Framework Project
+    Buvulnweb-Framework Project
        Thx for all use this project
 
 
@@ -70,7 +70,7 @@ def logo():
     The Programmer of this tool is not irresponsible about any damage Or leak induced by the user
  -----------------------------------------------------------------------------------------------------------
  
-help: python3 BlackDir.py -h
+help: python3 Buvulnweb.py -h
                                                                                                                 
 """)
 
@@ -594,7 +594,7 @@ def scanports(ip):
 
 def update():
     os.system(
-        "cd .. && rm -rf BlackDir-Framework-New && mkdir BlackDir-Framework-New && cd BlackDir-Framework-New && git clone https://github.com/RedVirus0/BlackDir-Framework.git && echo 'New Directory >> ' && pwd")
+        "cd .. && rm -rf Buvulnweb-Framework-New && mkdir Buvulnweb-Framework-New && cd Buvulnweb-Framework-New && git clone https://github.com/RedVirus0/Buvulnweb-Framework.git && echo 'New Directory >> ' && pwd")
 
 def hash_en(word,hash_type):
     word = word.strip()
@@ -761,23 +761,23 @@ parser = argparse.ArgumentParser("""
 --enum              : Wordpress User Enumerate 
 
 ex:
-python3 BlackDir.py --spider http://google.com
-python3 BlackDir.py --dork inurl:admin/login.php --country sa --text product
-python3 BlackDir.py --xss "paste url here"
-python3 BlackDir.py --sql "paste url here"
-python3 BlackDir.py --subdomain google.com
-python3 BlackDir.py --RevIP [ip address of server]
-python3 BlackDir.py --word redvirus --type md4
-python3 BlackDir.py --word redvirus --type md5
-python3 BlackDir.py --word redvirus --type sha1
-python3 BlackDir.py --word redvirus --type sha256
-python3 BlackDir.py --word redvirus --type sha512
-python3 BlackDir.py --hash_type 5f4dcc3b5aa765d61d8327deb882cf99
-python3 BlackDir.py --wordpress http://ebase.com/
-python3 BlackDir.py --wordpress http://ebase.com/ --ListUsername /root/Desktop/users.txt --ListPassowrd /root/Desktop/pass.txt
-python3 BlackDir.py --wordpress http://ebase.com/ --ListUsername /root/Desktop/users.txt 
-python3 BlackDir.py --wordpress http://ebase.com/ --ListPassword /root/Desktop/pass.txt
-python3 BlackDir.py --wordpress https://everythingrevelstoke.com --enum use
+python3 Buvulnweb.py --spider http://google.com
+python3 Buvulnweb.py --dork inurl:admin/login.php --country sa --text product
+python3 Buvulnweb.py --xss "paste url here"
+python3 Buvulnweb.py --sql "paste url here"
+python3 Buvulnweb.py --subdomain google.com
+python3 Buvulnweb.py --RevIP [ip address of server]
+python3 Buvulnweb.py --word redvirus --type md4
+python3 Buvulnweb.py --word redvirus --type md5
+python3 Buvulnweb.py --word redvirus --type sha1
+python3 Buvulnweb.py --word redvirus --type sha256
+python3 Buvulnweb.py --word redvirus --type sha512
+python3 Buvulnweb.py --hash_type 5f4dcc3b5aa765d61d8327deb882cf99
+python3 Buvulnweb.py --wordpress http://ebase.com/
+python3 Buvulnweb.py --wordpress http://ebase.com/ --ListUsername /root/Desktop/users.txt --ListPassowrd /root/Desktop/pass.txt
+python3 Buvulnweb.py --wordpress http://ebase.com/ --ListUsername /root/Desktop/users.txt 
+python3 Buvulnweb.py --wordpress http://ebase.com/ --ListPassword /root/Desktop/pass.txt
+python3 Buvulnweb.py --wordpress https://everythingrevelstoke.com --enum use
 
 
 
