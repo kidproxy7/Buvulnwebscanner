@@ -147,21 +147,6 @@ def clear():
         sys.stdout.write("\033[F")
         sys.stdout.write("\033[K") #clears until EOL
 
-# buvulnScan Logo
-def logo():
-    print(bcolors.WARNING)
-    logo_ascii = """
-                                  __         __
-                                 /__)_  """+bcolors.BADFAIL+" ●"+bcolors.WARNING+"""_/(  _ _
-                                / ( (//)/(/__)( (//)
-                                     /
-                     """+bcolors.ENDC+"""(The Multi-Tool Web Vulnerability Scanner)
-
-                -
-    """
-    print(logo_ascii)
-    print(bcolors.ENDC)
-
 
 # Initiliazing the idle loader/spinner class
 class Spinner:
