@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#                               __         __
-#                              /__)_   '_/(  _ _
-#                             / ( (//)/(/__)( (//)
-#                                  /
-#
-# Author     : -
-# Tool       : RapidScan v1.2
-# Usage      : python3 rapidsan.py example.com
-# Description: This scanner automates the process of security scanning by using a
-#              multitude of available linux security tools and some custom scripts.
-#
-
 # Importing the libraries
 import sys
 import argparse
@@ -127,19 +115,19 @@ def vul_remed_info(v1,v2,v3):
     print("\t"+bcolors.OKGREEN+str(tools_fix[v3-1][2])+bcolors.ENDC)
 
 
-# RapidScan Help Context
+# buvulnScan Help Context
 def helper():
         print(bcolors.OKBLUE+"Information:"+bcolors.ENDC)
         print("------------")
-        print("\t./rapidscan.py example.com: Scans the domain example.com.")
-        print("\t./rapidscan.py example.com --skip dmitry --skip theHarvester: Skip the 'dmitry' and 'theHarvester' tests.")
-        print("\t./rapidscan.py example.com --nospinner: Disable the idle loader/spinner.")
-        print("\t./rapidscan.py --update   : Updates the scanner to the latest version.")
-        print("\t./rapidscan.py --help     : Displays this help context.")
+        print("\t./buvulnscan.py example.com: Scans the domain example.com.")
+        print("\t./buvulnscan.py example.com --skip dmitry --skip theHarvester: Skip the 'dmitry' and 'theHarvester' tests.")
+        print("\t./buvulnscan.py example.com --nospinner: Disable the idle loader/spinner.")
+        print("\t./buvulnscan.py --update   : Updates the scanner to the latest version.")
+        print("\t./buvulnscan.py --help     : Displays this help context.")
         print(bcolors.OKBLUE+"Interactive:"+bcolors.ENDC)
         print("------------")
         print("\tCtrl+C: Skips current test.")
-        print("\tCtrl+Z: Quits RapidScan.")
+        print("\tCtrl+Z: Quits buvulnScan.")
         print(bcolors.OKBLUE+"Legends:"+bcolors.ENDC)
         print("--------")
         print("\t["+proc_high+"]: Scan process may take longer times (not predictable).")
@@ -159,7 +147,7 @@ def clear():
         sys.stdout.write("\033[F")
         sys.stdout.write("\033[K") #clears until EOL
 
-# RapidScan Logo
+# buvulnScan Logo
 def logo():
     print(bcolors.WARNING)
     logo_ascii = """
@@ -169,7 +157,7 @@ def logo():
                                      /
                      """+bcolors.ENDC+"""(The Multi-Tool Web Vulnerability Scanner)
 
-                     Check out our new software, """+bcolors.BG_LOW_TXT+"""NetBot"""+bcolors.ENDC+""" for simulating DDoS attacks - https://github.com/skavngr/netbot
+                -
     """
     print(logo_ascii)
     print(bcolors.ENDC)
@@ -210,7 +198,7 @@ class Spinner:
                     sys.stdout.flush()
 
         except (KeyboardInterrupt, SystemExit):
-            print("\n\t"+ bcolors.BG_ERR_TXT+"RapidScan received a series of Ctrl+C hits. Quitting..." +bcolors.ENDC)
+            print("\n\t"+ bcolors.BG_ERR_TXT+"buvulnScan received a series of Ctrl+C hits. Quitting..." +bcolors.ENDC)
             sys.exit(1)
 
     def start(self):
@@ -225,7 +213,7 @@ class Spinner:
             self.busy = False
             time.sleep(self.delay)
         except (KeyboardInterrupt, SystemExit):
-            print("\n\t"+ bcolors.BG_ERR_TXT+"RapidScan received a series of Ctrl+C hits. Quitting..." +bcolors.ENDC)
+            print("\n\t"+ bcolors.BG_ERR_TXT+"buvulnScan received a series of Ctrl+C hits. Quitting..." +bcolors.ENDC)
             sys.exit(1)
 
 # End ofloader/spinner class
@@ -488,16 +476,16 @@ tool_cmd   = [
                 ["host ",""],
 
                 #2
-                ["wget -O /tmp/rapidscan_temp_aspnet_config_err --tries=1 ","/%7C~.aspx"],
+                ["wget -O /tmp/buvulnscan_temp_aspnet_config_err --tries=1 ","/%7C~.aspx"],
 
                 #3
-                ["wget -O /tmp/rapidscan_temp_wp_check --tries=1 ","/wp-admin"],
+                ["wget -O /tmp/buvulnscan_temp_wp_check --tries=1 ","/wp-admin"],
 
                 #4
-                ["wget -O /tmp/rapidscan_temp_drp_check --tries=1 ","/user"],
+                ["wget -O /tmp/buvulnscan_temp_drp_check --tries=1 ","/user"],
 
                 #5
-                ["wget -O /tmp/rapidscan_temp_joom_check --tries=1 ","/administrator"],
+                ["wget -O /tmp/buvulnscan_temp_joom_check --tries=1 ","/administrator"],
 
                 #6
                 ["uniscan -e -u ",""],
@@ -707,7 +695,7 @@ tool_cmd   = [
                 ["nmap -p161 -sU --open -Pn ",""],
 
                 #75
-                ["wget -O /tmp/rapidscan_temp_aspnet_elmah_axd --tries=1 ","/elmah.axd"],
+                ["wget -O /tmp/buvulnscan_temp_aspnet_elmah_axd --tries=1 ","/elmah.axd"],
 
                 #76
                 ["nmap -p445,137-139 --open -Pn ",""],
@@ -716,7 +704,7 @@ tool_cmd   = [
                 ["nmap -p137,138 --open -Pn ",""],
 
                 #78
-                ["wapiti "," -f txt -o rapidscan_temp_wapiti"],
+                ["wapiti "," -f txt -o buvulnscan_temp_wapiti"],
 
                 #79
                 ["nmap -p80 --script=http-iis-webdav-vuln -Pn ",""],
@@ -1348,7 +1336,7 @@ def get_parser():
     parser.add_argument('-h', '--help', action='store_true', 
                         help='Show help message and exit.')
     parser.add_argument('-u', '--update', action='store_true', 
-                        help='Update RapidScan.')
+                        help='Update buvulnScan.')
     parser.add_argument('-s', '--skip', action='append', default=[],
                         help='Skip some tools', choices=[t[0] for t in tools_precheck])
     parser.add_argument('-n', '--nospinner', action='store_true', 
@@ -1409,7 +1397,7 @@ if args_namespace.help or (not args_namespace.update \
     helper()
 elif args_namespace.update:
     logo()
-    print("RapidScan is updating....Please wait.\n")
+    print("buvulnScan is updating....Please wait.\n")
     spinner.start()
     # Checking internet connectivity first...
     rs_internet_availability = check_internet()
@@ -1417,18 +1405,18 @@ elif args_namespace.update:
         print("\t"+ bcolors.BG_ERR_TXT + "There seems to be some problem connecting to the internet. Please try again or later." +bcolors.ENDC)
         spinner.stop()
         sys.exit(1)
-    cmd = 'sha1sum rapidscan.py | grep .... | cut -c 1-40'
+    cmd = 'sha1sum buvulnscan.py | grep .... | cut -c 1-40'
     oldversion_hash = subprocess.check_output(cmd, shell=True)
     oldversion_hash = oldversion_hash.strip()
-    os.system('wget -N https://raw.githubusercontent.com/skavngr/rapidscan/master/rapidscan.py -O rapidscan.py > /dev/null 2>&1')
+    os.system('wget -N https://raw.githubusercontent.com/skavngr/buvulnscan/master/buvulnscan.py -O buvulnscan.py > /dev/null 2>&1')
     newversion_hash = subprocess.check_output(cmd, shell=True)
     newversion_hash = newversion_hash.strip()
     if oldversion_hash == newversion_hash :
         clear()
-        print("\t"+ bcolors.OKBLUE +"You already have the latest version of RapidScan." + bcolors.ENDC)
+        print("\t"+ bcolors.OKBLUE +"You already have the latest version of buvulnScan." + bcolors.ENDC)
     else:
         clear()
-        print("\t"+ bcolors.OKGREEN +"RapidScan successfully updated to the latest version." +bcolors.ENDC)
+        print("\t"+ bcolors.OKGREEN +"buvulnScan successfully updated to the latest version." +bcolors.ENDC)
     spinner.stop()
     sys.exit(1)
 
@@ -1436,7 +1424,7 @@ elif args_namespace.target:
 
     target = url_maker(args_namespace.target)
     #target = args_namespace.target
-    os.system('rm /tmp/rapidscan* > /dev/null 2>&1') # Clearing previous scan files
+    os.system('rm /tmp/buvulnscan* > /dev/null 2>&1') # Clearing previous scan files
     os.system('clear')
     os.system('setterm -cursor off')
     logo()
@@ -1451,7 +1439,7 @@ elif args_namespace.target:
             output, err = p.communicate()
             val = output + err
         except:
-            print("\t"+bcolors.BG_ERR_TXT+"RapidScan was terminated abruptly..."+bcolors.ENDC)
+            print("\t"+bcolors.BG_ERR_TXT+"buvulnScan was terminated abruptly..."+bcolors.ENDC)
             sys.exit(1)
         
         # If the tool is not found or it's part of the --skip argument(s), disabling it
@@ -1472,9 +1460,9 @@ elif args_namespace.target:
         clear()
     unavail_tools_names = list(set(unavail_tools_names))
     if len(unavail_tools_names) == 0:
-        print("\t"+bcolors.OKGREEN+"All Scanning Tools are available. Complete vulnerability checks will be performed by RapidScan."+bcolors.ENDC)
+        print("\t"+bcolors.OKGREEN+"All Scanning Tools are available. Complete vulnerability checks will be performed by buvulnScan."+bcolors.ENDC)
     else:
-        print("\t"+bcolors.WARNING+"Some of these tools "+bcolors.BADFAIL+str(unavail_tools_names)+bcolors.ENDC+bcolors.WARNING+" are unavailable or will be skipped. RapidScan will still perform the rest of the tests. Install these tools to fully utilize the functionality of RapidScan."+bcolors.ENDC)
+        print("\t"+bcolors.WARNING+"Some of these tools "+bcolors.BADFAIL+str(unavail_tools_names)+bcolors.ENDC+bcolors.WARNING+" are unavailable or will be skipped. buvulnScan will still perform the rest of the tests. Install these tools to fully utilize the functionality of buvulnScan."+bcolors.ENDC)
     print(bcolors.BG_ENDL_TXT+"[ Checking Available Security Scanning Tools Phase... Completed. ]"+bcolors.ENDC)
     print("\n")
     print(bcolors.BG_HEAD_TXT+"[ Preliminary Scan Phase Initiated... Loaded "+str(tool_checks)+" vulnerability checks. ]"+bcolors.ENDC)
@@ -1491,7 +1479,7 @@ elif args_namespace.target:
         except Exception as e:
             print("\n")
         scan_start = time.time()
-        temp_file = "/tmp/rapidscan_temp_"+tool_names[tool][arg1]
+        temp_file = "/tmp/buvulnscan_temp_"+tool_names[tool][arg1]
         cmd = tool_cmd[tool][arg1]+target+tool_cmd[tool][arg2]+" > "+temp_file+" 2>&1"
 
         try:
@@ -1534,7 +1522,7 @@ elif args_namespace.target:
                 sys.stdout.write(ERASE_LINE)
                 #print("-" * terminal_size(), end='\r', flush=True)
                 print(bcolors.OKBLUE+"\nScan Interrupted in "+display_time(int(elapsed))+bcolors.ENDC, end='\r', flush=True)
-                print("\n"+bcolors.WARNING + "\tTest Skipped. Performing Next. Press Ctrl+Z to Quit RapidScan.\n" + bcolors.ENDC)
+                print("\n"+bcolors.WARNING + "\tTest Skipped. Performing Next. Press Ctrl+Z to Quit buvulnScan.\n" + bcolors.ENDC)
                 rs_skipped_checks = rs_skipped_checks + 1
 
         tool=tool+1
@@ -1555,7 +1543,7 @@ elif args_namespace.target:
                 vuln_info = rs_vul_list[rs_vul].split('*')
                 report.write(vuln_info[arg2])
                 report.write("\n------------------------\n\n")
-                temp_report_name = "/tmp/rapidscan_temp_"+vuln_info[arg1]
+                temp_report_name = "/tmp/buvulnscan_temp_"+vuln_info[arg1]
                 with open(temp_report_name, 'r') as temp_report:
                     data = temp_report.read()
                     report.write(data)
@@ -1563,14 +1551,14 @@ elif args_namespace.target:
                 temp_report.close()
                 rs_vul = rs_vul + 1
 
-            print("\tComplete Vulnerability Report for "+bcolors.OKBLUE+target+bcolors.ENDC+" named "+bcolors.OKGREEN+vulreport+bcolors.ENDC+" is available under the same directory RapidScan resides.")
+            print("\tComplete Vulnerability Report for "+bcolors.OKBLUE+target+bcolors.ENDC+" named "+bcolors.OKGREEN+vulreport+bcolors.ENDC+" is available under the same directory buvulnScan resides.")
 
         report.close()
     # Writing all scan files output into RS-Debug-ScanLog for debugging purposes.
     for file_index, file_name in enumerate(tool_names):
         with open(debuglog, "a") as report:
             try:
-                with open("/tmp/rapidscan_temp_"+file_name[arg1], 'r') as temp_report:
+                with open("/tmp/buvulnscan_temp_"+file_name[arg1], 'r') as temp_report:
                         data = temp_report.read()
                         report.write(file_name[arg2])
                         report.write("\n------------------------\n\n")
@@ -1590,4 +1578,4 @@ elif args_namespace.target:
     print(bcolors.BG_ENDL_TXT+"[ Report Generation Phase Completed. ]"+bcolors.ENDC)
 
     os.system('setterm -cursor on')
-    os.system('rm /tmp/rapidscan_te* > /dev/null 2>&1') # Clearing previous scan files
+    os.system('rm /tmp/buvulnscan_te* > /dev/null 2>&1') # Clearing previous scan files
