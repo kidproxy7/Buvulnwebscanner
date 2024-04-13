@@ -1366,20 +1366,11 @@ rs_avail_tools = 0
 # Checks Skipped
 rs_skipped_checks = 0
 
-if len(sys.argv) == 1:
-    logo()
-    helper()
-    sys.exit(1)
-
 args_namespace = get_parser().parse_args()
 
 if args_namespace.nospinner:
     spinner.disabled = True
 
-if args_namespace.help or (not args_namespace.update \
-    and not args_namespace.target):
-    logo()
-    helper()
 elif args_namespace.update:
     logo()
     print("buvulnScan is updating....Please wait.\n")
@@ -1412,8 +1403,7 @@ elif args_namespace.target:
     os.system('rm /tmp/buvulnscan* > /dev/null 2>&1') # Clearing previous scan files
     os.system('clear')
     os.system('setterm -cursor off')
-    logo()
-    print(bcolors.BG_HEAD_TXT+"[ Checking Available Security Scanning Tools Phase... Initiated. ]"+bcolors.ENDC)
+       print(bcolors.BG_HEAD_TXT+"[ Checking Available Security Scanning Tools Phase... Initiated. ]"+bcolors.ENDC)
 
     unavail_tools_names = list()
 
