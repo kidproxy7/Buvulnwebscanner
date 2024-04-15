@@ -150,16 +150,7 @@ def clear():
 # buvulnScan Logo
 def logo():
     print(bcolors.WARNING)
-    logo_ascii = """
-                                  __         __
-                                 /__)_  """+bcolors.BADFAIL+" ●"+bcolors.WARNING+"""_/(  _ _
-                                / ( (//)/(/__)( (//)
-                                     /
-                     """+bcolors.ENDC+"""(The Multi-Tool Web Vulnerability Scanner)
 
-       
-    """
-    print(logo_ascii)
     print(bcolors.ENDC)
 
 
